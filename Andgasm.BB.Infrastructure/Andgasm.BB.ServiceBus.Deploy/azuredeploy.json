@@ -1,0 +1,380 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespaces_BookieBreakerBus_name": {
+      "defaultValue": "BookieBreakerBusTEST",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2018-01-01-preview",
+      "name": "[parameters('namespaces_BookieBreakerBus_name')]",
+      "location": "West Europe",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/RootManageSharedAccessKey')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/networkRuleSets",
+      "apiVersion": "2018-01-01-preview",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "defaultAction": "Deny",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "defaultMessageTimeToLive": "P14D",
+        "maxSizeInMegabytes": 16384,
+        "requiresDuplicateDetection": false,
+        "duplicateDetectionHistoryTimeWindow": "PT10M",
+        "enableBatchedOperations": true,
+        "status": "Active",
+        "supportOrdering": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "enablePartitioning": true,
+        "enableExpress": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "defaultMessageTimeToLive": "P14D",
+        "maxSizeInMegabytes": 16384,
+        "requiresDuplicateDetection": false,
+        "duplicateDetectionHistoryTimeWindow": "PT10M",
+        "enableBatchedOperations": true,
+        "status": "Active",
+        "supportOrdering": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "enablePartitioning": true,
+        "enableExpress": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "defaultMessageTimeToLive": "P14D",
+        "maxSizeInMegabytes": 16384,
+        "requiresDuplicateDetection": false,
+        "duplicateDetectionHistoryTimeWindow": "PT10M",
+        "enableBatchedOperations": true,
+        "status": "Active",
+        "supportOrdering": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "enablePartitioning": true,
+        "enableExpress": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "defaultMessageTimeToLive": "P14D",
+        "maxSizeInMegabytes": 16384,
+        "requiresDuplicateDetection": false,
+        "duplicateDetectionHistoryTimeWindow": "PT10M",
+        "enableBatchedOperations": true,
+        "status": "Active",
+        "supportOrdering": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "enablePartitioning": true,
+        "enableExpress": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/FixtureSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT59S",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": true,
+        "deadLetteringOnFilterEvaluationExceptions": true,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST/FixtureSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT59S",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": true,
+        "deadLetteringOnFilterEvaluationExceptions": false,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/MatchEventExtractorSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT2M",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": true,
+        "deadLetteringOnFilterEvaluationExceptions": true,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/PlayerAppearanceSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT59S",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": true,
+        "deadLetteringOnFilterEvaluationExceptions": true,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/SeasonParticipantSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT30S",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": false,
+        "deadLetteringOnFilterEvaluationExceptions": false,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST/SquadRegistrationSvc')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "lockDuration": "PT59S",
+        "requiresSession": false,
+        "defaultMessageTimeToLive": "P14D",
+        "deadLetteringOnMessageExpiration": true,
+        "deadLetteringOnFilterEvaluationExceptions": true,
+        "maxDeliveryCount": 10,
+        "status": "Active",
+        "enableBatchedOperations": false,
+        "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST/SquadRegistrationSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST', 'SquadRegistrationSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/MatchEventExtractorSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST', 'MatchEventExtractorSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/PlayerAppearanceSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST', 'PlayerAppearanceSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/FixtureSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST', 'FixtureSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/SeasonParticipantSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST', 'SeasonParticipantSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2017-04-01",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST/FixtureSvc/$Default')]",
+      "location": "West Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST', 'FixtureSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=1",
+          "compatibilityLevel": 20
+        }
+      }
+    }
+  ]
+}

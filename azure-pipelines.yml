@@ -3,7 +3,7 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'

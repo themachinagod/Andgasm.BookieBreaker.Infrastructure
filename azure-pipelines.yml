@@ -6,6 +6,6 @@ steps:
 - task: AzurePowerShell@3
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
-    ScriptPath: 'Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptPath: 'Deploy-AzureResourceGroup.ps1'
     ScriptArguments: -ResourceGroupName 'testresource' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion

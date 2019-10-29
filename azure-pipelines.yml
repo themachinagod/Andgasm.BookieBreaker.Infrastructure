@@ -7,5 +7,5 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptType: 'InlineScript'
-    Inline: 'Remove-AzureSBNamespace -Name BookieBreakerTEST -Force'
+    Inline: 'Remove-AzureRmServiceBusNamespace -ResourceGroup testresource -NamespaceName BookieBreakerTEST'
     azurePowerShellVersion: 'LatestVersion'

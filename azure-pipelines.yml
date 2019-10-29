@@ -3,9 +3,9 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptType: 'InlineScript'
-    Inline: 'Remove-AzureRmServiceBusNamespace -ResourceGroup tesresource -NamespaceName BookieBreakerTEST'
+    Inline: 'Remove-AzureSBNamespace -Name BookieBreakerTEST -Force'
     azurePowerShellVersion: 'LatestVersion'

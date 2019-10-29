@@ -3,7 +3,7 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@4 # Teardown Service Bus
+- task: AzurePowerShell@3 # Teardown Service Bus
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptType: 'InlineScript'

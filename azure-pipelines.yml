@@ -3,9 +3,9 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@3 # Create Service Bus
+- task: AzurePowerShell@3
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
-    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'testresource' -ResourceGroupLocation 'centralus'
-    azurePowerShellVersion: LatestVersion
+    ScriptType: 'InlineScript'
+    Inline: 'Remove-AzureRmServiceBusNamespace -ResourceGroup testresource -NamespaceName BookieBreakerTEST'
+    azurePowerShellVersion: 'LatestVersion'

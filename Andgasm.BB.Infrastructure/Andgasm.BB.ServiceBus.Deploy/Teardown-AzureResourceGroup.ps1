@@ -1,0 +1,1 @@
+Remove-AzureRmServiceBusNamespace -ResourceGroup testresource -NamespaceName BookieBreakerTEST

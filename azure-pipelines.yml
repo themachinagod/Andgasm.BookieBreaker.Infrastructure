@@ -15,3 +15,10 @@ steps:
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create Season Participants API App Service
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+

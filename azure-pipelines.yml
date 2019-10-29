@@ -3,7 +3,7 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@3
+- task: AzurePowerShell@4
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptType: 'InlineScript'

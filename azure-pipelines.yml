@@ -3,9 +3,9 @@ pool:
   demands: azureps
 
 steps:
-- task: AzurePowerShell@3 # Create SQL Server
+- task: AzurePowerShell@3 # Teardown SQL Server
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
-    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Teardown-AzureResourceGroup.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion

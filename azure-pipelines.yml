@@ -9,3 +9,33 @@ steps:
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Teardown-AzureResourceGroup.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create SQL Server
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Teardown Service Bus
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Teardown-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create Service Bus
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@4 # Teardown Season Participants API App Service
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create Season Participants API App Service
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion

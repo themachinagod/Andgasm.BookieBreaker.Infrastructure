@@ -4,6 +4,7 @@ pool:
 
 steps:
 - task: AzurePowerShell@3 # Teardown SQL Server
+  name: "TeardownSQLServer"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Teardown-AzureResourceGroup.ps1'

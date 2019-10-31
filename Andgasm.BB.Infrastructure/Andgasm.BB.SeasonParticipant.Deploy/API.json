@@ -26,7 +26,7 @@
     }
   },
   "variables": {
-    "webSiteName": "SeasonParticipantSvcAPITEST"
+    "webSiteName": "SeasonParticipantSvc-API"
   },
   "resources": [
     {

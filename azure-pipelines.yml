@@ -3,6 +3,34 @@ pool:
   demands: azureps
 
 steps:
+- task: AzurePowerShell@3 # Teardown SQL Server
+  name: "Teardown_SQL_Server"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Teardown-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create SQL Server
+  name: "Create_SQL_Server"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Teardown Service Bus
+  name: "Teardown_Service_Bus"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Teardown-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create Service Bus
+  name: "Create_Service_Bus"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@4 # Teardown Season Participants Database
   name: "Teardown_Season_Participants_Database"
   inputs:
@@ -17,3 +45,18 @@ steps:
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-Database.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@4 # Teardown Season Participants API App Service
+  name: "Teardown_Season_Participants_API_App_Service"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-API.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@3 # Create Season Participants API App Service
+  name: "Create_Season_Participants_API_App_Service"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-API.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
+

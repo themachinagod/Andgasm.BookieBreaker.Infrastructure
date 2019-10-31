@@ -26,10 +26,14 @@
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
-    <Content Include="Deploy-AzureResourceGroup.ps1" />
-    <Content Include="Teardown-AzureResourceGroup.ps1" />
-    <Content Include="WebSite.json" />
-    <Content Include="WebSite.parameters.json" />
+    <Content Include="Deploy-Database.ps1" />
+    <Content Include="Deploy-API.ps1" />
+    <Content Include="Teardown-Database.ps1" />
+    <Content Include="Teardown-API.ps1" />
+    <Content Include="Database.json" />
+    <Content Include="Database.parameters.json" />
+    <Content Include="API.json" />
+    <Content Include="API.parameters.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

@@ -50,6 +50,13 @@ steps:
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-API.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@4 # Teardown Season Participants Extractor App Service
+  name: "Teardown_Season_Participants_Extractor_App_Service"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-Extractor.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
 
 # Service Stack Deploys
 - task: AzurePowerShell@3 # Create Season Participants Database
@@ -66,4 +73,10 @@ steps:
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-API.ps1'
     ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
     azurePowerShellVersion: LatestVersion
-
+- task: AzurePowerShell@3 # Create Season Participants Extractor App Service
+  name: "Create_Season_Participants_Extractor_App_Service"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-Extractor.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion

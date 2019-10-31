@@ -3,6 +3,13 @@ pool:
   demands: azureps
 
 steps:
+- task: AzurePowerShell@4 # Teardown Season Participants Database
+  name: "Teardown_Season_Participants_Database"
+  inputs:
+    azureSubscription: 'AzureRmPipeline-conn'
+    ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-Database.ps1'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Season Participants Database
   name: "Create_Season_Participants_API_Database"
   inputs:

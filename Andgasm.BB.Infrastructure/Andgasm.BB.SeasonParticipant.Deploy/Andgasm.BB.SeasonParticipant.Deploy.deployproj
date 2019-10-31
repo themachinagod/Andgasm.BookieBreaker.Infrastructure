@@ -26,8 +26,12 @@
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
+    <Content Include="Deploy-Extractor.ps1" />
+    <Content Include="Extractor.json" />
+    <Content Include="Extractor.parameters.json" />
     <Content Include="Deploy-Database.ps1" />
     <Content Include="Deploy-API.ps1" />
+    <Content Include="Teardown-Extractor.ps1" />
     <Content Include="Teardown-Database.ps1" />
     <Content Include="Teardown-API.ps1" />
     <Content Include="Database.json" />

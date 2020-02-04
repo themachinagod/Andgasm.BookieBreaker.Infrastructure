@@ -41,7 +41,7 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationevent')]",
       "location": "West Europe",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
@@ -62,7 +62,7 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureevent')]",
       "location": "West Europe",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
@@ -83,7 +83,7 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonevent')]",
       "location": "West Europe",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
@@ -104,7 +104,7 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodevent')]",
       "location": "West Europe",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
@@ -125,10 +125,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/FixtureSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonevent/FixtureSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -146,10 +146,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST/FixtureSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodevent/FixtureSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -167,10 +167,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/MatchEventExtractorSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureevent/MatchEventExtractorSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -188,10 +188,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/PlayerAppearanceSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureevent/PlayerAppearanceSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -209,10 +209,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/SeasonParticipantSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonevent/SeasonParticipantSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -230,10 +230,10 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST/SquadRegistrationSvc')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationevent/SquadRegistrationSvc')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -251,11 +251,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationeventTEST/SquadRegistrationSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newclubseasonassociationevent/SquadRegistrationSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST', 'SquadRegistrationSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationevent', 'SquadRegistrationSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newclubseasonassociationevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -270,11 +270,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/MatchEventExtractorSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureevent/MatchEventExtractorSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST', 'MatchEventExtractorSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent', 'MatchEventExtractorSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -289,11 +289,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureeventTEST/PlayerAppearanceSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newfixtureevent/PlayerAppearanceSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST', 'PlayerAppearanceSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent', 'PlayerAppearanceSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newfixtureevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -308,11 +308,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/FixtureSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonevent/FixtureSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST', 'FixtureSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent', 'FixtureSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -327,11 +327,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasoneventTEST/SeasonParticipantSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonevent/SeasonParticipantSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST', 'SeasonParticipantSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasoneventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent', 'SeasonParticipantSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {
@@ -346,11 +346,11 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2017-04-01",
-      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodeventTEST/FixtureSvc/EventFilter')]",
+      "name": "[concat(parameters('namespaces_BookieBreakerBus_name'), '/newseasonperiodevent/FixtureSvc/EventFilter')]",
       "location": "West Europe",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST', 'FixtureSvc')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodeventTEST')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodevent', 'FixtureSvc')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_BookieBreakerBus_name'), 'newseasonperiodevent')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_BookieBreakerBus_name'))]"
       ],
       "properties": {

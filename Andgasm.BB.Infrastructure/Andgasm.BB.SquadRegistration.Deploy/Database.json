@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "servers_bookiebreakersql_name": {
+      "defaultValue": "bookiebreakersql",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2017-10-01-preview",
+      "name": "[concat(parameters('servers_bookiebreakersql_name'), '/SquadRegistrationSvc')]",
+      "location": "westeurope",
+      "sku": {
+        "name": "Basic",
+        "tier": "Basic",
+        "capacity": 5
+      },
+      "kind": "v12.0,user",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "maxSizeBytes": 2147483648,
+        "catalogCollation": "SQL_Latin1_General_CP1_CI_AS",
+        "zoneRedundant": false,
+        "readScale": "Disabled",
+        "readReplicaCount": 0
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases/securityAlertPolicies",
+      "apiVersion": "2018-06-01-preview",
+      "name": "[concat(parameters('servers_bookiebreakersql_name'), '/SquadRegistrationSvc/Default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_bookiebreakersql_name'), 'SquadRegistrationSvc')]"
+      ],
+      "properties": {
+        "state": "Disabled",
+        "disabledAlerts": [
+          ""
+        ],
+        "emailAddresses": [
+          ""
+        ],
+        "emailAccountAdmins": false,
+        "retentionDays": 0
+      }
+    }
+  ]
+}

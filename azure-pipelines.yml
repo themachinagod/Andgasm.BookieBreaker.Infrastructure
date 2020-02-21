@@ -9,14 +9,14 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Teardown-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Service Bus
   name: "Create_Service_Bus"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.ServiceBus.Deploy/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 
 # Database
@@ -25,28 +25,28 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-Database.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@4 # Teardown Squad Registrations Database
   name: "Teardown_Squad_Registrations_Database"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Teardown-Database.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Teardown SQL Server
   name: "Teardown_SQL_Server"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Teardown-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create SQL Server
   name: "Create_SQL_Server"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SQLServer.Deploy/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 
 # App Service Teardowns
@@ -56,14 +56,14 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-API.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@4 # Teardown Season Participants Extractor App Service
   name: "Teardown_Season_Participants_Extractor_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Teardown-Extractor.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 # Squad Registrations
 - task: AzurePowerShell@4 # Teardown Squad Registrations API App Service
@@ -71,14 +71,14 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Teardown-API.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@4 # Teardown Squad Registrations Extractor App Service
   name: "Teardown_Squad_Registrations_Extractor_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Teardown-Extractor.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 
 # Service Stack Deploys
@@ -88,21 +88,21 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-Database.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Season Participants API App Service
   name: "Create_Season_Participants_API_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-API.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Season Participants Extractor App Service
   name: "Create_Season_Participants_Extractor_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SeasonParticipant.Deploy/Deploy-Extractor.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 # Squad Registrations
 - task: AzurePowerShell@3 # Create Squad Registrations Database
@@ -110,19 +110,19 @@ steps:
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Deploy-Database.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Squad Registrations API App Service
   name: "Create_Squad_Registrations_API_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Deploy-API.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@3 # Create Squad Registrations Extractor App Service
   name: "Create_Squad_Registrations_Extractor_App_Service"
   inputs:
     azureSubscription: 'AzureRmPipeline-conn'
     ScriptPath: 'Andgasm.BB.Infrastructure/Andgasm.BB.SquadRegistration.Deploy/Deploy-Extractor.ps1'
-    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'westeurope'
+    ScriptArguments: -ResourceGroupName 'BookieBreaker' -ResourceGroupLocation 'ukwest'
     azurePowerShellVersion: LatestVersion
